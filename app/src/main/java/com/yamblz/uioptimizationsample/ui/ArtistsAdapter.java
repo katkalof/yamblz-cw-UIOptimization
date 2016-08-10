@@ -93,7 +93,7 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVH
                     .load(artist.getCover().getBigImageUrl())
                     .into(
                             new Target() {
-                                final int GRADIENT_HEIGHT = 320;
+                                final int GRADIENT_HEIGHT = dpToPx(160);
 
                                 @Override
                                 public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -131,5 +131,15 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVH
                     artist.getTracksCount(),
                     artist.getTracksCount()));
         }
+    }
+
+
+    /**
+     * Convert dp to px
+     *
+     * @param dp to px
+     */
+    private int dpToPx(float dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 }
